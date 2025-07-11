@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp">
+
+        <ImageButton
+            android:id="@+id/btn_loader"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:contentDescription="Loader Button"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_louder" />
+
+        <ImageButton
+            android:id="@+id/btn_hauler"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:background="@null"
+            android:src="@drawable/btn_hauler"
+            android:layout_marginTop="15dp"
+            android:contentDescription="Loader Button" />
+
+        <ImageButton
+            android:id="@+id/btn_jumlah_hauler"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:background="@null"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/btn_jumlah_hauler"
+            android:contentDescription="Loader Button" />
+
+        <ImageButton
+            android:id="@+id/btn_matching_factor"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:background="@null"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/btn_matching_factor"
+            android:contentDescription="Loader Button" />
+
+    </LinearLayout>
+
+</RelativeLayout>

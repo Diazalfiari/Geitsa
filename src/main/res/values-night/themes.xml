@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FleetCalculator" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Background window (pengganti colorBackground yang salah) -->
+        <item name="android:windowBackground">#121212</item>
+
+        <!-- Warna elemen UI seperti Card, Surface -->
+        <item name="colorSurface">#1E1E1E</item>
+        <item name="colorPrimary">#222222</item>
+        <item name="colorSecondary">#333333</item>
+
+        <!-- Warna teks -->
+        <item name="colorOnBackground">#FFFFFF</item>
+        <item name="colorOnSurface">#FFFFFF</item>
+        <item name="android:textColorHint">#AAAAAA</item>
+        <item name="android:textColorLink">#ffffff</item>
+    </style>
+
+    <style name="Theme.FleetCalculator" parent="Base.Theme.FleetCalculator" />
+</resources>
