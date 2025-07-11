@@ -5,14 +5,20 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
+import com.example.fleetcalculator.service.TelegramIntegrationHelper
 import java.text.SimpleDateFormat
 import java.util.*
 
 class Hauler : AppCompatActivity() {
 
+    private lateinit var telegramHelper: TelegramIntegrationHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hauler)
+
+        telegramHelper = TelegramIntegrationHelper(this)
 
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
         val btnRiwayat = findViewById<ImageButton>(R.id.btnRiwayat)
@@ -106,6 +112,23 @@ class Hauler : AppCompatActivity() {
             val existingData = sharedPref.getString("riwayat_hauler", "") ?: ""
             val newData = "$formattedRiwayat\n$existingData"
             sharedPref.edit().putString("riwayat_hauler", newData).apply()
+            
+            // Send to Telegram if enabled
+            telegramHelper.sendHaulerCalculation(
+                scope = lifecycleScope,
+                vesselCapacity = c,
+                jarak = jarak,
+                kecepatan = kecepatan,
+                travelTime = travelTime,
+                cycleTime = cmt,
+                swellFactor = sf,
+                efisiensiKerja = et,
+                productivity = q
+            ) { success, message ->
+                runOnUiThread {
+                    telegramHelper.showTelegramStatus(success, message)
+                }
+            }
         }
     }
 

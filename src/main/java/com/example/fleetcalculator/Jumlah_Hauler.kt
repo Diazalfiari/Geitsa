@@ -6,14 +6,20 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
+import com.example.fleetcalculator.service.TelegramIntegrationHelper
 import java.text.SimpleDateFormat
 import java.util.*
 
 class Jumlah_Hauler : AppCompatActivity() {
 
+    private lateinit var telegramHelper: TelegramIntegrationHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jumlah_hauler)
+
+        telegramHelper = TelegramIntegrationHelper(this)
 
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
         val btnRiwayat = findViewById<ImageButton>(R.id.btnRiwayat)
@@ -77,6 +83,22 @@ class Jumlah_Hauler : AppCompatActivity() {
                     Jumlah Hauler: %.2f unit
                     ------------------------------------
                 """.trimIndent().format(result))
+
+                // Send to Telegram if enabled
+                telegramHelper.sendGenericCalculation(
+                    scope = lifecycleScope,
+                    calculationType = "Jumlah Hauler (Form 1)",
+                    result = resultText,
+                    additionalInfo = """
+                        Produktivitas Loader: $loaderProductivity BCM/jam
+                        Produktivitas Hauler: $haulerProductivity BCM/jam
+                        Jarak: $distance m
+                    """.trimIndent()
+                ) { success, message ->
+                    runOnUiThread {
+                        telegramHelper.showTelegramStatus(success, message)
+                    }
+                }
             } else {
                 resultView.text = "Mohon isi semua input dengan benar."
             }
@@ -103,6 +125,22 @@ class Jumlah_Hauler : AppCompatActivity() {
                     Produktivitas: %.2f BCM/jam
                     ------------------------------------
                 """.trimIndent().format(result))
+
+                // Send to Telegram if enabled
+                telegramHelper.sendGenericCalculation(
+                    scope = lifecycleScope,
+                    calculationType = "Jumlah Hauler (Form 2)",
+                    result = resultText,
+                    additionalInfo = """
+                        Jumlah Hauler: $numberOfHauler unit
+                        Produktivitas Hauler: $haulerProductivity2 BCM/jam
+                        Jarak: $distance2 m
+                    """.trimIndent()
+                ) { success, message ->
+                    runOnUiThread {
+                        telegramHelper.showTelegramStatus(success, message)
+                    }
+                }
             } else {
                 resultView2.text = "Mohon isi semua input dengan benar."
             }

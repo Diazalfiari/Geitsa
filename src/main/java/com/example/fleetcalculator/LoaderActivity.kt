@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.example.fleetcalculator.service.TelegramIntegrationHelper
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -20,10 +22,14 @@ class LoaderActivity : AppCompatActivity() {
     private lateinit var btnCalculate: Button
     private lateinit var tvResult: TextView
     private lateinit var tvCustomNote: TextView
+    
+    private lateinit var telegramHelper: TelegramIntegrationHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loader)
+
+        telegramHelper = TelegramIntegrationHelper(this)
 
         etBucketCapacity = findViewById(R.id.etBucketCapacity)
         etCycleTime = findViewById(R.id.etCycleTime)
@@ -119,6 +125,22 @@ class LoaderActivity : AppCompatActivity() {
             val existingData = sharedPref.getString("riwayat_loader", "") ?: ""
             val newData = "$formattedRiwayat\n$existingData"
             sharedPref.edit().putString("riwayat_loader", newData).apply()
+            
+            // Send to Telegram if enabled
+            telegramHelper.sendLoaderCalculation(
+                scope = lifecycleScope,
+                fleet = selectedFleet,
+                unit = selectedUnit,
+                bucketCapacity = q,
+                bucketFactor = k,
+                cycleTime = ct,
+                efficiency = E,
+                productivity = productivity
+            ) { success, message ->
+                runOnUiThread {
+                    telegramHelper.showTelegramStatus(success, message)
+                }
+            }
 
         } catch (e: Exception) {
             tvResult.text = "Mohon isi semua field dengan angka yang valid."

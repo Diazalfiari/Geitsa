@@ -1,5 +1,6 @@
 package com.example.fleetcalculator.data
 
+import android.content.Context
 import com.example.fleetcalculator.data.model.LoggedInUser
 
 /**
@@ -7,7 +8,7 @@ import com.example.fleetcalculator.data.model.LoggedInUser
  * maintains an in-memory cache of login status and user credentials information.
  */
 
-class LoginRepository(val dataSource: LoginDataSource) {
+class LoginRepository(private val dataSource: LoginDataSource, private val context: Context) {
 
     // in-memory cache of the loggedInUser object
     var user: LoggedInUser? = null
@@ -20,6 +21,14 @@ class LoginRepository(val dataSource: LoginDataSource) {
         // If user credentials will be cached in local storage, it is recommended it be encrypted
         // @see https://developer.android.com/training/articles/keystore
         user = null
+        
+        // Try to restore user session
+        val sharedPreferences = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val currentUserId = sharedPreferences.getString("current_user", null)
+        if (currentUserId != null) {
+            val displayName = sharedPreferences.getString("display_name_$currentUserId", currentUserId) ?: currentUserId
+            user = LoggedInUser(currentUserId, displayName)
+        }
     }
 
     fun logout() {
@@ -40,7 +49,10 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
     private fun setLoggedInUser(loggedInUser: LoggedInUser) {
         this.user = loggedInUser
-        // If user credentials will be cached in local storage, it is recommended it be encrypted
-        // @see https://developer.android.com/training/articles/keystore
+        // Store current user session
+        val sharedPreferences = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit()
+            .putString("current_user", loggedInUser.userId)
+            .apply()
     }
 }
