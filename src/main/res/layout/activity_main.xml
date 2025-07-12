@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main"
+    tools:context=".MainActivity">
+
+    <!-- Foto Profil Utama di Tengah, sebagai tombol -->
+    <ImageButton
+        android:id="@+id/btn_profile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_profile"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Foto Profil"
+        android:scaleType="fitCenter"
+        android:padding="6dp" />
+
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_below="@id/btn_profile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp">
+
+        <ImageButton
+            android:id="@+id/btn_loader"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:contentDescription="Loader Button"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_louder" />
+
+        <ImageButton
+            android:id="@+id/btn_hauler"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:background="@null"
+            android:src="@drawable/btn_hauler"
+            android:layout_marginTop="15dp"
+            android:contentDescription="Hauler Button" />
+
+        <ImageButton
+            android:id="@+id/btn_jumlah_hauler"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:background="@null"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/btn_jumlah_hauler"
+            android:contentDescription="Jumlah Hauler Button" />
+
+        <ImageButton
+            android:id="@+id/btn_matching_factor"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:background="@null"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/btn_matching_factor"
+            android:contentDescription="Matching Factor Button" />
+
+    </LinearLayout>
+
+</RelativeLayout>

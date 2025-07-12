@@ -1,0 +1,137 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- ScrollView -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_mf_plan">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center"
+            android:layout_marginTop="140dp">
+
+            <ImageView
+                android:id="@+id/ivRumusPlan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rumus_plan"
+                android:contentDescription="Rumus Plan"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Section Hauler -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📦 Data Hauler Plan"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"
+                android:textColor="#000000" />
+
+            <LinearLayout
+                android:id="@+id/containerHauler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <Button
+                android:id="@+id/btnTambahHauler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+ Tambah Hauler"
+                android:layout_marginBottom="16dp"
+                android:textColor="#FFFFFF" />
+
+            <!-- Section Loader -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📦 Data Loader Plan"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"
+                android:textColor="#000000" />
+
+            <LinearLayout
+                android:id="@+id/containerLoader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <Button
+                android:id="@+id/btnTambahLoader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+ Tambah Loader"
+                android:layout_marginBottom="16dp"
+                android:textColor="#FFFFFF" />
+
+            <!-- Tombol Hitung -->
+            <Button
+                android:id="@+id/btnHitungMF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hitung Matching Factor"
+                android:layout_marginTop="16dp"
+                android:textColor="#FFFFFF" />
+
+            <!-- Hasil -->
+            <TextView
+                android:id="@+id/tvHasilMF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hasil akan ditampilkan di sini"
+                android:paddingTop="16dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#000000" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Tombol Navigasi Atas: Back dan Riwayat -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="30dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@android:drawable/ic_media_previous"
+            android:contentDescription="Kembali" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/btnRiwayat"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@null"
+            android:src="@drawable/ic_riwayat"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:contentDescription="Riwayat" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- ScrollView -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_mf">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="50dp"
+            android:gravity="center"
+            android:layout_marginTop="140dp">
+
+            <!-- Semua tombol menu -->
+            <ImageButton
+                android:id="@+id/btnMicro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/mf_micro"
+                android:contentDescription="Micro"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_marginBottom="30dp" />
+
+            <ImageButton
+                android:id="@+id/btnMacro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/mf_macro"
+                android:contentDescription="Macro"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_marginBottom="30dp" />
+
+            <ImageButton
+                android:id="@+id/btnPlan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/mf_plan"
+                android:contentDescription="Plan"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_marginBottom="30dp" />
+
+            <ImageButton
+                android:id="@+id/btnActualToPlan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/mf_aktualtoplan"
+                android:contentDescription="Actual To Plan"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_marginBottom="30dp" />
+
+            <ImageButton
+                android:id="@+id/btnActual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/mf_aktual"
+                android:contentDescription="Actual"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_marginBottom="30dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Tombol Navigasi Atas: Back dan Riwayat -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="30dp"> <!-- Margin atas lebih besar -->
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@android:drawable/ic_media_previous"
+            android:contentDescription="Kembali" /> <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/btnRiwayat"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@null"
+            android:src="@drawable/ic_riwayat"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:contentDescription="Riwayat" />
+
+    </LinearLayout>
+
+</RelativeLayout>
