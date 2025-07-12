@@ -11,31 +11,27 @@ import com.example.fleetcalculator.utils.TelegramBotSender
 
 class LoaderActivity : AppCompatActivity() {
 
-    private lateinit var etBucketCapacity: EditText
     private lateinit var etCycleTime: EditText
-    private lateinit var etCustomEfficiency: EditText
+    private lateinit var spinnerBucketCapacity: Spinner
     private lateinit var spinnerBucketFactor: Spinner
     private lateinit var spinnerEfficiency: Spinner
     private lateinit var spinnerFleet: Spinner
     private lateinit var spinnerUnit: Spinner
     private lateinit var btnCalculate: Button
     private lateinit var tvResult: TextView
-    private lateinit var tvCustomNote: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loader)
 
-        etBucketCapacity = findViewById(R.id.etBucketCapacity)
         etCycleTime = findViewById(R.id.etCycleTime)
-        etCustomEfficiency = findViewById(R.id.etCustomEfficiency)
+        spinnerBucketCapacity = findViewById(R.id.spinnerBucketCapacity)
         spinnerBucketFactor = findViewById(R.id.spinnerBucketFactor)
         spinnerEfficiency = findViewById(R.id.spinnerEfficiency)
         spinnerFleet = findViewById(R.id.spinnerFleet)
         spinnerUnit = findViewById(R.id.spinnerUnit)
         btnCalculate = findViewById(R.id.btnCalculate)
         tvResult = findViewById(R.id.tvResult)
-        tvCustomNote = findViewById(R.id.tvCustomNote)
 
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
         btnBack.setOnClickListener {
@@ -60,8 +56,11 @@ class LoaderActivity : AppCompatActivity() {
         val units = arrayOf(
             "PC2000 (Unit EX3000)", "PC1250 (Unit EX2000)", "PC850 (Unit EX1000)"
         )
-        val bucketFactors = arrayOf("1.00", "0.95", "0.90")
-        val efficiencies = arrayOf("0.7", "0.75", "0.8", "0.85", "0.9", "0.95", "1", "Custom")
+
+        // Get spinner options from string arrays
+        val bucketCapacityOptions = resources.getStringArray(R.array.bucket_capacity_options)
+        val bucketFactorOptions = resources.getStringArray(R.array.bucket_factor_options)
+        val efficiencyOptions = resources.getStringArray(R.array.efficiency_options)
 
         val layout = R.layout.custom_spinner_dropdown
 
@@ -73,45 +72,33 @@ class LoaderActivity : AppCompatActivity() {
         unitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerUnit.adapter = unitAdapter
 
-        val bucketFactorAdapter = ArrayAdapter(this, layout, bucketFactors)
+        val bucketCapacityAdapter = ArrayAdapter(this, layout, bucketCapacityOptions)
+        bucketCapacityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerBucketCapacity.adapter = bucketCapacityAdapter
+
+        val bucketFactorAdapter = ArrayAdapter(this, layout, bucketFactorOptions)
         bucketFactorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerBucketFactor.adapter = bucketFactorAdapter
 
-        val efficiencyAdapter = ArrayAdapter(this, layout, efficiencies)
+        val efficiencyAdapter = ArrayAdapter(this, layout, efficiencyOptions)
         efficiencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerEfficiency.adapter = efficiencyAdapter
 
         spinnerFleet.setPopupBackgroundResource(android.R.color.white)
         spinnerUnit.setPopupBackgroundResource(android.R.color.white)
+        spinnerBucketCapacity.setPopupBackgroundResource(android.R.color.white)
         spinnerBucketFactor.setPopupBackgroundResource(android.R.color.white)
         spinnerEfficiency.setPopupBackgroundResource(android.R.color.white)
-
-        spinnerEfficiency.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val isCustom = efficiencies[position] == "Custom"
-                etCustomEfficiency.visibility = if (isCustom) View.VISIBLE else View.GONE
-                tvCustomNote.visibility = if (isCustom) View.VISIBLE else View.GONE
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                etCustomEfficiency.visibility = View.GONE
-                tvCustomNote.visibility = View.GONE
-            }
-        }
     }
 
     private fun calculateProductivity() {
         try {
             val selectedFleet = spinnerFleet.selectedItem.toString()
             val selectedUnit = spinnerUnit.selectedItem.toString()
-            val q = etBucketCapacity.text.toString().toDouble()
-            val k = spinnerBucketFactor.selectedItem.toString().toDouble()
+            val q = extractValueFromParentheses(spinnerBucketCapacity.selectedItem.toString())
+            val k = extractValueFromParentheses(spinnerBucketFactor.selectedItem.toString())
             val ct = etCycleTime.text.toString().toDouble()
-            val E = if (spinnerEfficiency.selectedItem.toString() == "Custom") {
-                etCustomEfficiency.text.toString().toDouble()
-            } else {
-                spinnerEfficiency.selectedItem.toString().toDouble()
-            }
+            val E = extractValueFromParentheses(spinnerEfficiency.selectedItem.toString())
 
             val productivity = ((q * k * 60) / ct) * E
             val resultText = "Produktivitas Loader: %.2f per jam".format(productivity)
@@ -123,10 +110,10 @@ class LoaderActivity : AppCompatActivity() {
                 🕒 $timestamp
                 Fleet: $selectedFleet
                 Unit: $selectedUnit
-                Kapasitas Bucket: $q m³
-                Bucket Factor: $k
+                Kapasitas Bucket: ${spinnerBucketCapacity.selectedItem}
+                Bucket Factor: ${spinnerBucketFactor.selectedItem}
                 Cycle Time: $ct menit
-                Efisiensi: $E
+                Efisiensi: ${spinnerEfficiency.selectedItem}
                 Produktivitas: %.2f m³/jam
                 ------------------------------------
             """.trimIndent().format(productivity)
@@ -150,6 +137,12 @@ class LoaderActivity : AppCompatActivity() {
             tvResult.text = "Mohon isi semua field dengan angka yang valid."
             tvResult.setTextColor(resources.getColor(android.R.color.holo_red_dark))
         }
+    }
+
+    private fun extractValueFromParentheses(text: String): Double {
+        val regex = "\\(([0-9]*\\.?[0-9]+)\\)".toRegex()
+        val matchResult = regex.find(text)
+        return matchResult?.groupValues?.get(1)?.toDouble() ?: 0.0
     }
 
     private fun getCurrentTimestamp(): String {
