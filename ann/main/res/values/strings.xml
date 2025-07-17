@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Master Fleet</string>
+    <string name="title_activity_riwayat_loader">Riwayat_Loader</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">Welcome !</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be &gt;5 characters</string>
+    <string name="login_failed">Login failed</string>
+
+    <!-- Loader bucket capacity options -->
+    <string-array name="bucket_capacity_options">
+        <item>PC850 (4.3)</item>
+        <item>PC850 (5)</item>
+        <item>PC1250 (6.7)</item>
+        <item>PC1250 (7.5)</item>
+        <item>PC2000 (12)</item>
+        <item>PC2000 (14)</item>
+    </string-array>
+
+    <!-- Loader bucket factor options -->
+    <string-array name="bucket_factor_options">
+        <item>Easy (1.2)</item>
+        <item>Easy (1.1)</item>
+        <item>Average (1.1)</item>
+        <item>Average (1.0)</item>
+        <item>Ratcher Difficult (0.9)</item>
+        <item>Ratcher Difficult (0.8)</item>
+        <item>Difficult (0.8)</item>
+        <item>Difficult (0.7)</item>
+    </string-array>
+
+    <!-- Loader efficiency options -->
+    <string-array name="efficiency_options">
+        <item>Good (0.83)</item>
+        <item>Avarage (0.80)</item>
+        <item>Rather poor (0.75)</item>
+        <item>Poor (0.70)</item>
+    </string-array>
+</resources>

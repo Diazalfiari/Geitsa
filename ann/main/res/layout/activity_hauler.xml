@@ -1,0 +1,162 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_hauler">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Tombol Navigasi -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="70dp"
+            android:layout_marginTop="20dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@android:drawable/ic_media_previous"
+                android:contentDescription="Kembali" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/btnRiwayat"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@null"
+                android:src="@drawable/ic_riwayat"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:contentDescription="Riwayat" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivRumusHauler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rumus_hauler"
+            android:contentDescription="Rumus Hauler"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:maxWidth="300dp"
+            android:maxHeight="120dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Tambah Fleet di atas Payload -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fleet"
+            android:paddingBottom="8dp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spinnerFleetHauler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:popupBackground="@android:color/white"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/edtPayload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Payload"
+            android:inputType="numberDecimal"
+            android:textColorHint="#000000"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/edtJarak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jarak Tempuh (meter)"
+            android:inputType="numberDecimal"
+            android:textColorHint="#000000"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/edtKecepatan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Kecepatan (km/h)"
+            android:inputType="numberDecimal"
+            android:textColorHint="#000000"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/btnGenerateTravelTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Generate Travel Time"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/edtTravelTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Travel Time (menit)"
+            android:inputType="numberDecimal"
+            android:focusable="false"
+            android:clickable="false"
+            android:textColorHint="#000000"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Efisiensi Kerja Dump Truck"
+            android:textColor="#000000"
+            android:layout_marginTop="12dp" />
+
+        <Spinner
+            android:id="@+id/spinnerEfisiensiKerja"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnHitungHauler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hitung Produktivitas"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/txtResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hasil akan ditampilkan di sini"
+            android:layout_marginTop="16dp"
+            android:textColor="#000000" />
+
+        <!-- Tombol baru untuk kirim ke Telegram -->
+        <Button
+            android:id="@+id/btnKirimTelegram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="12dp"
+            android:enabled="false" />
+
+    </LinearLayout>
+</ScrollView>

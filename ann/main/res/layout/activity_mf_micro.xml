@@ -1,0 +1,176 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- ScrollView -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_mf_micro">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center"
+            android:layout_marginTop="140dp">
+
+            <ImageView
+                android:id="@+id/ivRumusMicro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rumus_micro"
+                android:contentDescription="Rumus Micro"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Tambah Fleet -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fleet"
+                android:paddingBottom="8dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinnerFleetMicro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:popupBackground="@android:color/white"
+                android:textColor="#000000"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jumlah Hauler (n)"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/etJumlahHauler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="contoh: 5"
+                android:textColorHint="#000000"
+                android:inputType="numberDecimal"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Serving Time (menit)"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/etServingTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="contoh: 2.8"
+                android:textColorHint="#000000"
+                android:inputType="numberDecimal"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jumlah Loader (n)"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/etJumlahLoader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="contoh: 1"
+                android:textColorHint="#000000"
+                android:inputType="numberDecimal"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hauler Cycle Time (menit)"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/etCycleTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="contoh: 13.9"
+                android:textColorHint="#000000"
+                android:inputType="numberDecimal"
+                android:textColor="#000000" />
+
+            <Button
+                android:id="@+id/btnCalculateMF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hitung Match Factor"
+                android:layout_marginTop="16dp"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tvResultMF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hasil akan ditampilkan di sini"
+                android:paddingTop="16dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#000000" />
+
+            <!-- Tombol Kirim ke Telegram, muncul setelah hitung -->
+            <Button
+                android:id="@+id/btnKirimTelegramMF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="12dp"
+                android:enabled="false"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Tombol Navigasi Atas: Back dan Riwayat -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="30dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@android:drawable/ic_media_previous"
+            android:contentDescription="Kembali" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/btnRiwayat"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@null"
+            android:src="@drawable/ic_riwayat"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:contentDescription="Riwayat" />
+    </LinearLayout>
+</RelativeLayout>

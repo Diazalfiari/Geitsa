@@ -1,0 +1,167 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- ScrollView -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_mf_aktual">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center"
+            android:layout_marginTop="140dp">
+
+            <!-- Gambar Rumus Paling Atas -->
+            <ImageView
+                android:id="@+id/ivRumusAktual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rumus_aktual"
+                android:contentDescription="Rumus Aktual"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Fleet di bawah gambar rumus -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fleet"
+                android:paddingBottom="8dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinnerFleetActual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:popupBackground="@android:color/white"
+                android:textColor="#000000"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Section Hauler Aktual -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📦 Data Hauler Aktual"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"
+                android:textColor="#000000" />
+
+            <LinearLayout
+                android:id="@+id/containerHauler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <Button
+                android:id="@+id/btnTambahHauler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+ Tambah Hauler"
+                android:layout_marginBottom="16dp"
+                android:textColor="#FFFFFF" />
+
+            <!-- Section Loader Aktual -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📦 Data Loader Aktual"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"
+                android:textColor="#000000" />
+
+            <LinearLayout
+                android:id="@+id/containerLoader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <Button
+                android:id="@+id/btnTambahLoader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+ Tambah Loader"
+                android:layout_marginBottom="16dp"
+                android:textColor="#FFFFFF" />
+
+            <!-- Tombol Hitung -->
+            <Button
+                android:id="@+id/btnHitungMF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hitung Match Factor"
+                android:layout_marginTop="16dp"
+                android:textColor="#FFFFFF" />
+
+            <!-- Hasil -->
+            <TextView
+                android:id="@+id/tvHasilMF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hasil akan ditampilkan di sini"
+                android:paddingTop="16dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#000000" />
+
+            <!-- Tombol Kirim Telegram, muncul setelah hitung -->
+            <Button
+                android:id="@+id/btnKirimTelegramMF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="12dp"
+                android:enabled="false"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Tombol Navigasi Atas: Back dan Riwayat -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="30dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@android:drawable/ic_media_previous"
+            android:contentDescription="Kembali" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/btnRiwayat"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@null"
+            android:src="@drawable/ic_riwayat"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:contentDescription="Riwayat" />
+    </LinearLayout>
+</RelativeLayout>

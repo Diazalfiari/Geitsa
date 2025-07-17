@@ -1,0 +1,204 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_jumlah_hauler">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:padding="16dp">
+
+    <!-- Tombol Navigasi -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="70dp"
+        android:layout_marginTop="20dp">
+
+      <ImageButton
+          android:id="@+id/btnBack"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@null"
+          android:src="@android:drawable/ic_media_previous"
+          android:contentDescription="Kembali" />
+
+      <View
+          android:layout_width="0dp"
+          android:layout_height="1dp"
+          android:layout_weight="1" />
+
+      <ImageButton
+          android:id="@+id/btnRiwayat"
+          android:layout_width="32dp"
+          android:layout_height="32dp"
+          android:background="@null"
+          android:src="@drawable/ic_riwayat"
+          android:scaleType="fitCenter"
+          android:adjustViewBounds="true"
+          android:contentDescription="Riwayat" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivRumusJumlahHauler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/rumus_jumlah_hauler"
+        android:contentDescription="Rumus Jumlah Hauler"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Fleet di atas pilihan rumus -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fleet"
+        android:paddingBottom="8dp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/spinnerFleetJumlahHauler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:popupBackground="@android:color/white"
+        android:textColor="#000000"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Pilihan Rumus -->
+    <RadioGroup
+        android:id="@+id/rgOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+      <RadioButton
+          android:id="@+id/rbOption1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Tentukan Jumlah Hauler"
+          android:textColor="#000000" />
+
+      <RadioButton
+          android:id="@+id/rbOption2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Tentukan Produktivitas"
+          android:textColor="#000000" />
+    </RadioGroup>
+
+    <!-- Form Point 1 -->
+    <LinearLayout
+        android:id="@+id/layoutPoint1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginTop="16dp">
+
+      <EditText
+          android:id="@+id/etLoaderProductivity"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Produktivitas Loader (bcm/jam)"
+          android:inputType="numberDecimal"
+          android:textColorHint="#000000"
+          android:textColor="#000000" />
+
+      <EditText
+          android:id="@+id/etHaulerProductivity"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Produktivitas Hauler (bcm/jam)"
+          android:inputType="numberDecimal"
+          android:textColorHint="#000000"
+          android:textColor="#000000" />
+
+      <Button
+          android:id="@+id/btnCalculate1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Hitung Jumlah Hauler"
+          android:textColor="#FFFFFF" />
+
+      <TextView
+          android:id="@+id/tvResult1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:textColor="#000000" />
+
+      <!-- Tombol Kirim Telegram muncul setelah hitung -->
+      <Button
+          android:id="@+id/btnKirimTelegram1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Submit"
+          android:textColor="#FFFFFF"
+          android:layout_marginTop="8dp"
+          android:enabled="false"
+          android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- Form Point 2 -->
+    <LinearLayout
+        android:id="@+id/layoutPoint2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginTop="16dp">
+
+      <EditText
+          android:id="@+id/etNumberOfHauler"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Jumlah Hauler"
+          android:inputType="numberDecimal"
+          android:textColorHint="#000000"
+          android:textColor="#000000" />
+
+      <EditText
+          android:id="@+id/etHaulerProductivity2"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Produktivitas Hauler (bcm/jam)"
+          android:inputType="numberDecimal"
+          android:textColorHint="#000000"
+          android:textColor="#000000" />
+
+      <Button
+          android:id="@+id/btnCalculate2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Hitung Produktivitas"
+          android:textColor="#FFFFFF" />
+
+      <TextView
+          android:id="@+id/tvResult2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:textColor="#000000" />
+
+      <!-- Tombol Kirim Telegram muncul setelah hitung -->
+      <Button
+          android:id="@+id/btnKirimTelegram2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Kirim ke Telegram"
+          android:textColor="#FFFFFF"
+          android:layout_marginTop="8dp"
+          android:enabled="false"
+          android:visibility="gone" />
+    </LinearLayout>
+  </LinearLayout>
+</ScrollView>

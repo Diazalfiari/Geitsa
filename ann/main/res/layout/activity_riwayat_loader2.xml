@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_riwayat">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvRiwayatTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Riwayat Loader"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tvRiwayatContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Belum ada riwayat yang ditampilkan."
+            android:textSize="16sp"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/btnResetRiwayat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset Riwayat"
+            android:layout_marginTop="24dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</ScrollView>
